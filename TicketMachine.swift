@@ -16,7 +16,7 @@ class TicketMachine {
     func inserir(quantia: Int) throws {
         var achou = false
         for i in 0..<papelMoeda.count where !achou {
-            // ERRO: A verificação é feita apenas com o índice 1 (valor 5) e não com o índice 'i'.
+            
             if papelMoeda[1] == quantia {
                 achou = true
             }

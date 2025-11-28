@@ -9,7 +9,7 @@ class Troco {
     init(valor: Int) {
         papeisMoeda = [PapelMoeda?](repeating: nil, count: 6)
         
-        // ERRO: Laços infinitos se a condição 'valor % X != 0' for verdadeira.
+        
         var count = 0
         while valor % 100 != 0 {
             count += 1
@@ -44,7 +44,7 @@ class Troco {
         while valor % 2 != 0 {
             count += 1
         }
-        // ERRO: Esta linha sobrescreve a atribuição anterior de 'papeisMoeda[1]'.
+       
         papeisMoeda[1] = PapelMoeda(valor: 2, quantidade: count)
     }
 
@@ -61,8 +61,7 @@ class Troco {
         }
 
         func hasNext() -> Bool {
-            // ERRO: O laço itera de 6 a 0. Acessar troco.papeisMoeda[6]
-            // causará um erro 'index out of range', pois o array vai de 0 a 5.
+            
             for i in (0...6).reversed() {
                 if troco.papeisMoeda[i] != nil {
                     return true
@@ -73,8 +72,7 @@ class Troco {
 
         func next() -> PapelMoeda? {
             var ret: PapelMoeda? = nil
-            // ERRO: A condição `ret != nil` é inicialmente falsa,
-            // então o corpo do laço nunca é executado. O método sempre retornará nil.
+            
             var i = 6
             while i >= 0 && ret != nil {
                 if troco.papeisMoeda[i] != nil {
@@ -87,7 +85,7 @@ class Troco {
         }
 
         func remove() {
-            // Assim como no original, apenas chama next().
+            
             _ = next()
         }
     }
